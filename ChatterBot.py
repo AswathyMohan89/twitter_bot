@@ -2,6 +2,7 @@
 import tweepy
 import json
 import time
+import random
 
 # Twitter API Keys
 access_token  = '1851468854-znPKyGnJiKd72fDF2mSocYgnqJlNYfDtX31RlgD'
@@ -13,14 +14,21 @@ consumer_secret= 'OSFRHXUvyr4PaOJdDN4axHRrDGa4iHSYbmCpZLZ1wf4cBH9WvS'
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
 api = tweepy.API(auth, parser=tweepy.parsers.JSONParser())
-
+happy_quotes = [
+    "For every minute you are angry you lose sixty seconds of happiness. - Ralph Waldo Emerson",
+    "Folks are usually about as happy as they make their minds up to be. - Abraham Lincoln",
+    "Happiness is when what you think, what you say, and what you do are in harmony. - Mahatma Gandhi",
+    "Count your age by friends, not years. Count your life by smiles, not tears. - John Lennon",
+    "Happiness is a warm puppy. - Charles M. Schulz",
+    "The happiness of your life depends upon the quality of your thoughts. - Marcus Aurelius",
+    "Now and then it's good to pause in our pursuit of happiness and just be happy. - Guillaume Apollinaire"]
 
 # Create a function that tweets
 # CODE GOES HERE
 # Create a function that tweets
 def TweetOut(tweet_number):
     api.update_status(
-        "Can't stop. Won't stop. Chatting! This is Tweet #%s!" %
+        random.choice(happy_quotes)+"This is Tweet #%s!" %
         tweet_number)
 
 
